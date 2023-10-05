@@ -1,6 +1,7 @@
 // Import the Mongoose library
 const mongoose = require('mongoose');
 
+
 // Define a new Mongoose schema for tasks
 const issueSchema = new mongoose.Schema({
     // Define a field for task description, which is a required string

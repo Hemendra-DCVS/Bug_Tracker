@@ -1,0 +1,13 @@
+// Import the Task model for working with tasks
+// const Task = require("../models/task");
+
+// Controller function to handle the GET request for the home page
+module.exports.home = async function(req, res){
+     
+
+      // Render the 'projects' EJS template and pass the 'projects' data
+     
+      return res.render('home');
+   
+    
+}

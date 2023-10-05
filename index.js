@@ -21,7 +21,7 @@ app.use(express.static('./assets'));
 app.use(express.urlencoded({ extended: true }));
 
 // Import and use the routes defined in the 'routes' module
-app.use('/', require('./router/routes'));
+app.use('/', require('./routes/home-router'));
 
 // Set the view engine to use EJS (Embedded JavaScript)
 app.set('view engine', 'ejs');

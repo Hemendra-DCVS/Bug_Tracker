@@ -1,5 +1,7 @@
 // Import the Mongoose library
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema; // Add this line to import Schema
+const issue =require('./issue')
 
 // Define a new Mongoose schema for tasks
 const projectSchema = new mongoose.Schema({
@@ -20,7 +22,7 @@ const projectSchema = new mongoose.Schema({
     },
     issues: [
         { type: Schema.Types.ObjectId,
-        ref: 'Issue' }],
+        ref: 'issue' }],
         
 }, { timestamps: true } );
 
