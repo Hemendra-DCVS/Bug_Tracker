@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Issue_Tracker</title>
+    <title>Issue Tracker</title>
 
     <link
   rel="stylesheet"
@@ -33,20 +33,54 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a class="nav-link" href="#">Create Project</a>
+                <a class="nav-link" id="navlinks" href="#create-project">Create Project</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">View Projects</a>
+                <a class="nav-link" href="#all-projects">View Projects</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
+
+
+
+<!--          
+    <div class="container text-center mt-5">
+      <h1 class="display-4 text-primary">List of Projects</h1>
+    </div>
+ 
+    <div class="container mt-4">
+      <% all_projects.forEach((project) => { %>
+        <div class="card mb-4">
+          <div class="card-body">
+            <h3 class="card-title"><%= project.projectTitle %></h3>
+            <p class="card-text">Description: <%= project.description %></p>
+            <p class="card-text">Author: <%= project.Author %></p>
+          </div>
+        </div>
+      <% }); %>
+    </div> -->
+    <div class="container mt-5">
+      <h1 class="display-4 text-primary text-center" id="all-projects">List of Projects</h1>
+      <ul>
+        <% all_projects.forEach((project) => { %>
+          <li>
+            <h3><a href="/projects/<%= project._id %>/create-issue">Create Issue for <%= project.projectTitle %></a></h3>
+            <p>Description: <%= project.description %></p>
+            <p>Author: <%= project.Author %></p>
+          </li>
+        <% }); %>
+      </ul>
+      
+    </div>
+    
+    
       
       
     
     <div class="container text-center mt-5">
-        <h1 class="display-4 text-primary">Create a New Project</h1>
+        <h1 class="display-4 text-primary" id="create-project">Create a New Project</h1>
         
       </div>
       
@@ -66,6 +100,8 @@
       </div>
       <button type="submit" class="btn btn-primary">Create Project</button>
     </form>
+   
+    
 
 
  

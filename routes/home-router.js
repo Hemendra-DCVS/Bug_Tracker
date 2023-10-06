@@ -8,6 +8,6 @@ const homecontroller = require('../controller/home_controller'); // Import the c
 router.get('/', homecontroller.home);
 
 router.use('/projects', require('./project'));
-
+router.use('/issues',  require('./issue'));
 
 module.exports = router; // Export the router for use in other parts of the application

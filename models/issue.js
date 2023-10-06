@@ -4,6 +4,10 @@ const mongoose = require('mongoose');
 
 // Define a new Mongoose schema for tasks
 const issueSchema = new mongoose.Schema({
+    project: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Project'
+    },
     // Define a field for task description, which is a required string
     issueTitle: {
         type: String,
@@ -19,9 +23,10 @@ const issueSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    labels: {
-        type: String,
-    }
+    labels: [{
+        type: String, // Assuming labels are strings
+        trim: true    // Trim whitespace from labels
+            }]
 },    { timestamps: true });
 
 // Create a Mongoose model for tasks using the defined schema
