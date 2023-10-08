@@ -11,7 +11,7 @@ module.exports.createProject = async (req, res) => {
       Author,
     });
 
-    // Redirect to a success page or display a success message
+  
     res.redirect('back');
 
   } catch (error) {

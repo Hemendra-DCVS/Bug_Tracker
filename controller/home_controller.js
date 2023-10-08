@@ -17,15 +17,3 @@ module.exports.home = async function (req, res) {
     };
     
 
-
-// try {
-//       // Fetch the list of projects from the database
-//       const projects = await Project.find();
-  
-//       // Render the 'projects' EJS template and pass the 'projects' data
-//       res.render('projects/list', { projects });
-//     } catch (error) {
-//       console.error(error);
-//       // Handle errors, e.g., display an error message or redirect to an error page
-//       res.status(500).send('An error occurred while fetching the projects.');
-//     }

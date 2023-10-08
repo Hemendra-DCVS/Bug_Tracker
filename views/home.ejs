@@ -6,27 +6,23 @@
 
     <title>Issue Tracker</title>
 
-    <link
-  rel="stylesheet"
-  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-  
->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
 
+    <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="/css/home.css">
-
-
-
 </head>
 <body>
 
-
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
           <!-- Left side of the navbar -->
           <a class="navbar-brand" href="#">
-            <i class="fas fa-bug"></i> <!-- Font Awesome Bug icon -->
-            Issue Tracker
+            <i class="fas fa-bug"></i> Issue Tracker
           </a>
           
           <!-- Right side of the navbar -->
@@ -41,26 +37,9 @@
             </ul>
           </div>
         </div>
-      </nav>
+    </nav>
 
-
-
-<!--          
-    <div class="container text-center mt-5">
-      <h1 class="display-4 text-primary">List of Projects</h1>
-    </div>
- 
-    <div class="container mt-4">
-      <% all_projects.forEach((project) => { %>
-        <div class="card mb-4">
-          <div class="card-body">
-            <h3 class="card-title"><%= project.projectTitle %></h3>
-            <p class="card-text">Description: <%= project.description %></p>
-            <p class="card-text">Author: <%= project.Author %></p>
-          </div>
-        </div>
-      <% }); %>
-    </div> -->
+    <!-- List of Projects -->
     <div class="container mt-5">
       <h1 class="display-4 text-primary text-center" id="all-projects">List of Projects</h1>
       <ul>
@@ -72,18 +51,13 @@
           </li>
         <% }); %>
       </ul>
-      
     </div>
-    
-    
-      
-      
-    
+
+    <!-- Create a New Project Form -->
     <div class="container text-center mt-5">
         <h1 class="display-4 text-primary" id="create-project">Create a New Project</h1>
-        
-      </div>
-      
+    </div>
+
     <br>
     <form class="col-md-6 mx-auto" action="/projects/create" method="POST">
       <div class="form-group">
@@ -101,18 +75,12 @@
       <button type="submit" class="btn btn-primary">Create Project</button>
     </form>
 
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+      <a href="#top">Go to Top <i class="fa-solid fa-circle-up fa-flip"></i></a>
+    </div>
 
-
-    
-<!-- Back to Top Button and UP-Arrow-->
-<div class="back-to-top">
-  <a href="#top">Go to Top <i class="fa-solid fa-circle-up fa-flip"></i> </a>
-</div>
-   
-    
-
-
- 
-  <script src="/assets/JavaScript/home.script.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="/assets/JavaScript/home.script.js"></script>
 </body>
 </html>

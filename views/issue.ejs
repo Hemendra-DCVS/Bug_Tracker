@@ -1,187 +1,125 @@
-<!-- create-issue.ejs -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ISSUES: <%= project.projectTitle %></title>
-  <link
-  rel="stylesheet"
-  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
-  
-    
-    <link rel="stylesheet" type="text/css" href="/css/issue.css">
-
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/issue.css">
 </head>
 <body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <!-- Left side of the navbar -->
+      <a class="navbar-brand" href="#">
+        <i class="fas fa-bug"></i> Issue Tracker
+      </a>
+      <!-- Right side of the navbar -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" id="issue-create" href="#create-issue">Create issue</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#view-issues">View issues</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-          <!-- Left side of the navbar -->
-          <a class="navbar-brand" href="#">
-            <i class="fas fa-bug"></i> <!-- Font Awesome Bug icon -->
-            Issue Tracker
-          </a>
-          
-          <!-- Right side of the navbar -->
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link" id="issue-create" href="#create-issue">Create issue</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#view-issues">View issues</a>
-              </li>
-            </ul>
+  <!-- Main Content -->
+  <div class="container mt-5">
+    <h1 class="display-4 text-primary" id="view-issues">Issues for <%= project.projectTitle %> </h1>
+    
+    <!-- Search Bar -->
+    <div class="container mt-3">
+      <div class="form-group">
+        <label for="search-query">Search by title and description:</label>
+        <input type="text" id="search-query" class="form-control" placeholder="Enter search query">
+      </div>
+    </div>
+
+    <!-- Filter Button and Options -->
+    <button class="filter-button" type="button" id="filter-button">Filter</button>
+    <div class="filter-container" id="filter-container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="labels-filter">Labels</label>
+            <div id="labels-filter" class="filter-box">
+              <!-- Labels checkboxes will be populated here -->
+            </div>
           </div>
         </div>
-      </nav>
-
-     
-      
-
-
-      <div class="container mt-5">
-        <h1 class="display-4 text-primary" id="view-issues">Issues for <%= project.projectTitle %> </h1>
-      
-        <!-- <div class="container mt-5">
-          <table class="table table-bordered table-hover custom-table">
-            <thead class="thead-dark">
-              <tr>
-                <th scope="col">Issue Title</th>
-                <th scope="col">Description</th>
-                <th scope="col">Author</th>
-                <th scope="col">Labels</th>
-              </tr>
-            </thead>
-            <tbody>
-              <% issues.forEach((issue, index) => { %>
-                <tr>
-                  <td class="font-weight-bold text-primary"><%= issue.issueTitle %></td>
-                  <td><%= issue.description %></td>
-                  <td><%= issue.Author %></td>
-                  <td><%= issue.labels.join(', ') %></td>
-                </tr>
-              <% }); %>
-            </tbody>
-          </table>
-        </div> -->
-        <div class="container mt-3">
+        <div class="col-md-6">
           <div class="form-group">
-              <label for="search-query">Search by title and description:</label>
-              <input type="text" id="search-query" class="form-control" placeholder="Enter search query">
+            <label for="author-filter">Authors</label>
+            <div id="author-filter" class="filter-box">
+              <!-- Author checkboxes will be populated here -->
+            </div>
           </div>
+        </div>
       </div>
-<!-- Filter button to toggle Labels and Authors -->
-    <!-- Filter button to toggle Labels and Authors -->
-     <!-- Filter button to toggle Labels and Authors -->
-     <button class="filter-button" type="button" id="filter-button">Filter</button>
+    </div>
 
-     <!-- Filter by Labels and Authors (initially collapsed) -->
-     <div class="filter-container" id="filter-container">
-       <div class="row">
-         <div class="col-md-6">
-           <div class="form-group">
-             <label for="labels-filter">Labels</label>
-             <div id="labels-filter" class="filter-box">
-               <!-- Labels checkboxes will be populated here -->
-             </div>
-           </div>
-         </div>
-         <div class="col-md-6">
-           <div class="form-group">
-             <label for="author-filter">Authors</label>
-             <div id="author-filter" class="filter-box">
-               <!-- Author checkboxes will be populated here -->
-             </div>
-           </div>
-         </div>
-       </div>
-     </div>
+    <!-- Table to Display Issues -->
+    <div class="container mt-3">
+      <table class="table table-bordered table-hover custom-table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Issue Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Author</th>
+            <th scope="col">Labels</th>
+          </tr>
+        </thead>
+        <tbody id="issue-table-body">
+          <% issues.forEach(issue => { %>
+            <tr>
+              <td class="font-weight-bold text-primary"><%= issue.issueTitle %></td>
+              <td><%= issue.description %></td>
+              <td><%= issue.Author %></td>
+              <td><%= issue.labels.join(', ') %></td>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
-
-
-
-
-    
-
-
-
-      <div class="container mt-3">
-          <table class="table table-bordered table-hover custom-table">
-              <thead class="thead-dark">
-                  <tr>
-                      <th scope="col">Issue Title</th>
-                      <th scope="col">Description</th>
-                      <th scope="col">Author</th>
-                      <th scope="col">Labels</th>
-                  </tr>
-              </thead>
-              <tbody id="issue-table-body">
-                  <% issues.forEach(issue => { %>
-                      <tr>
-                          <td class="font-weight-bold text-primary"><%= issue.issueTitle %></td>
-                          <td><%= issue.description %></td>
-                          <td><%= issue.Author %></td>
-                          <td><%= issue.labels.join(', ') %></td>
-                      </tr>
-                  <% }); %>
-              </tbody>
-          </table>
+  <!-- Create Issue Section -->
+  <div class="container mt-5">
+    <h1 id="create-issue" class="display-4 text-primary text-center">Create Issue for <%= project.projectTitle %></h1>
+    <form action="/projects/<%= project._id %>/new-issue" method="POST">
+      <div class="form-group">
+        <label for="issueTitle">Issue Title:</label>
+        <input type="text" class="form-control" id="issueTitle" name="issueTitle" placeholder="Enter issue title" required>
       </div>
-  
-        
-        
-        
-        
-        
-        
-
-
-      <div class="container mt-5">
-        <h1 id="create-issue" class="display-4 text-primary text-center">Create Issue for <%= project.projectTitle %></h1>
-        <form action="/projects/<%= project._id %>/new-issue" method="POST">
-          <div class="form-group">
-            <label for="issueTitle">Issue Title:</label>
-            <input type="text" class="form-control" id="issueTitle" name="issueTitle" placeholder="Enter issue title" required>
-          </div>
-          <div class="form-group">
-            <label for="description">Description:</label>
-            <textarea class="form-control" id="description" name="description" rows="4" placeholder="Enter issue description" required></textarea>
-          </div>
-          <div class="form-group">
-            <label for="Author">Author:</label>
-            <input type="text" class="form-control" id="Author" name="Author" placeholder="Enter author name" required>
-          </div>
-          <div class="form-group">
-            <label for="labels">Labels (comma-separated):</label>
-            <input type="text" class="form-control" id="labels" name="labels" placeholder="Enter labels (for example: Bugs, New feature, patch)">
-          </div>
-          <button type="submit" class="btn btn-primary">Create Issue</button>
-        </form>
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <textarea class="form-control" id="description" name="description" rows="4" placeholder="Enter issue description" required></textarea>
       </div>
+      <div class="form-group">
+        <label for="Author">Author:</label>
+        <input type="text" class="form-control" id="Author" name="Author" placeholder="Enter author name" required>
+      </div>
+      <div class="form-group">
+        <label for="labels">Labels (comma-separated):</label>
+        <input type="text" class="form-control" id="labels" name="labels" placeholder="Enter labels (for example: Bugs, New feature, patch)">
+      </div>
+      <button type="submit" class="btn btn-primary">Create Issue</button>
+    </form>
+  </div>
 
+  <!-- Back to Top Button -->
+  <div class="back-to-top">
+    <a href="#top">Go to Top <i class="fa-solid fa-circle-up fa-flip"></i></a>
+  </div>
 
-      
-<!-- Back to Top Button and UP-Arrow-->
-<div class="back-to-top">
-  <a href="#top">Go to Top <i class="fa-solid fa-circle-up fa-flip"></i> </a>
-</div>
-
-        
-      
-<script src="/assets/JavaScript/issue.script.js"></script> 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+WN9GtVorFak+2vF/+6zP6aU5r5F5F5F5F5F5F5F5F5F5F5F5F5" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/Sc5L5z5u5F5F5F5F5F5F5F5F5F5F5F5F5F5" crossorigin="anonymous"></script>
-<!-- Include jQuery first -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-
-<!-- Then include Bootstrap's JavaScript -->
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
-
+  <!-- Scripts -->
+  <script src="/assets/JavaScript/issue.script.js"></script>
 </body>
 </html>

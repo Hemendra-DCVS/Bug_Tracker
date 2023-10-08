@@ -2,10 +2,10 @@
 const express = require('express');
 const router = express.Router();
 
-const apiController = require('../controller/api_controller'); // Adjust the relative path as needed
+const apiController = require('../controller/api_controller'); //  relative path 
  // Import the controller for handling routes
 
-// Handle POST request to '/add-task' URL
+// Handle GET request
 router.get('/issues', apiController.issues);
 
 

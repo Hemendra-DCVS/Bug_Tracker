@@ -2,10 +2,10 @@
 const express = require('express');
 const router = express.Router();
 const issueController = require('../controller/issue_controller');
-const projectController = require('../controller/project_controller'); // Adjust the relative path as needed
+const projectController = require('../controller/project_controller'); //relative path 
  // Import the controller for handling routes
 
-// Handle POST request to '/add-task' URL
+// Handle requests to URL
 router.post('/create', projectController.createProject);
 router.get('/:projectId/create-issue', issueController.createIssue);
 router.post('/:projectId/new-issue', issueController.newIssue);

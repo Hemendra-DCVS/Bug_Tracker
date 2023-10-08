@@ -1,36 +1,37 @@
 // Import the Mongoose library
 const mongoose = require('mongoose');
 
-
 // Define a new Mongoose schema for tasks
 const issueSchema = new mongoose.Schema({
-    project: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Project'
-    },
-    // Define a field for task description, which is a required string
-    issueTitle: {
-        type: String,
-        required: true
-    },
-    
-    // Define a field for task category, which is a string (optional)
-    description: {
-        type: String,
-        required: true
-    },
-    Author: {
-        type: String,
-        required: true
-    },
-    labels: [{
-        type: String, // Assuming labels are strings
-        trim: true    // Trim whitespace from labels
-            }]
-},    { timestamps: true });
+  // Reference to the Project model
+  project: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Project'
+  },
+  // Issue title (required string)
+  issueTitle: {
+    type: String,
+    required: true
+  },
+  // Issue description (required string)
+  description: {
+    type: String,
+    required: true
+  },
+  // Author of the issue (required string)
+  Author: {
+    type: String,
+    required: true
+  },
+  // Labels for the issue (array of strings, trimmed)
+  labels: [{
+    type: String,
+    trim: true
+  }]
+}, { timestamps: true }); // Enable timestamps for created and updated fields
 
-// Create a Mongoose model for tasks using the defined schema
+// Create a Mongoose model for issues using the defined schema
 const issue = mongoose.model('issue', issueSchema);
 
-// Export the Task model to be used in other parts of the application
+// Export the Issue model to be used in other parts of the application
 module.exports = issue;
