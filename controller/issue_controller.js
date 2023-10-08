@@ -4,12 +4,10 @@ const Project = require('../models/project'); // Import the Project model
 module.exports.createIssue = async function (req, res) {
     try {
       const projectId = req.params.projectId;
-     
-
       // Fetch the project details based on the projectId
       const project = await Project.findById(projectId); // Use Project model here
       const issues = await Issue.find({ project: projectId });
-      console.log(issues);
+      
       return res.render('issue', { project, issues });
     } catch (error) {
       console.error('Error fetching project:', error);
@@ -33,11 +31,11 @@ module.exports.newIssue = async function (req, res) {
         Author: req.body.Author,
         labels: labelsArray,
       });
-       console.log(newIssue);   
+        
       await newIssue.save();
       
       const issues = await Issue.find({ project: projectId });
-      console.log(issues);
+     
       return res.render('issue', { project, issues });
     } catch (error) {
       console.error('Error creating issue:', error);

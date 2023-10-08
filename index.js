@@ -17,6 +17,15 @@ const project = require('./models/project');
 // Serve static files (like CSS, JavaScript, etc.) from the 'assets' directory
 app.use(express.static('./assets'));
 
+app.use('/assets', express.static('assets', { 
+    setHeaders: (res, path, stat) => {
+      if (path.endsWith('.js')) {
+        res.set('Content-Type', 'application/javascript');
+      }
+    }
+  }));
+  
+
 // Parse incoming URL-encoded form data and populate the request body
 app.use(express.urlencoded({ extended: true }));
 

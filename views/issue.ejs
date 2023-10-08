@@ -43,26 +43,81 @@
 
       <div class="container mt-5">
         <h1 class="display-4 text-primary" id="view-issues">Issues for <%= project.projectTitle %> </h1>
-        
-
       
-        <!-- Display issues -->
-        <div class="container mt-5">   
-            <div class="row">
-                <% issues.forEach((issue) => { %>
-                    <div class="col-md-4 mb-4">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title font-weight-bold text-dark display-5"><%= issue.issueTitle %></h5>
-                                <p class="card-text">Description: <%= issue.description %></p>
-                                <p class="card-text">Author: <%= issue.Author %></p>
-                                <p class="card-text">Labels: <%= issue.labels.join(', ') %></p>
-                            </div>
-                        </div>
-                    </div>
-                <% }); %>
-            </div>
+        <!-- <div class="container mt-5">
+          <table class="table table-bordered table-hover custom-table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Issue Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Author</th>
+                <th scope="col">Labels</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% issues.forEach((issue, index) => { %>
+                <tr>
+                  <td class="font-weight-bold text-primary"><%= issue.issueTitle %></td>
+                  <td><%= issue.description %></td>
+                  <td><%= issue.Author %></td>
+                  <td><%= issue.labels.join(', ') %></td>
+                </tr>
+              <% }); %>
+            </tbody>
+          </table>
+        </div> -->
+        <div class="container mt-3">
+          <div class="form-group">
+              <label for="search-query">Search by title and description:</label>
+              <input type="text" id="search-query" class="form-control" placeholder="Enter search query">
+          </div>
+      </div>
+
+          <!-- Popup for filtering by labels and authors -->
+        <div id="filter-popup" class="popup">
+          <h3>Filter by Labels</h3>
+          <div id="labels-filter">
+              <!-- Labels checkboxes will be populated here -->
+          </div>
+
+          <h3>Filter by Author</h3>
+          <div id="author-filter">
+              <!-- Author select will be populated here -->
+          </div>
         </div>
+
+
+
+
+      <div class="container mt-3">
+          <table class="table table-bordered table-hover custom-table">
+              <thead class="thead-dark">
+                  <tr>
+                      <th scope="col">Issue Title</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Author</th>
+                      <th scope="col">Labels</th>
+                  </tr>
+              </thead>
+              <tbody id="issue-table-body">
+                  <% issues.forEach(issue => { %>
+                      <tr>
+                          <td class="font-weight-bold text-primary"><%= issue.issueTitle %></td>
+                          <td><%= issue.description %></td>
+                          <td><%= issue.Author %></td>
+                          <td><%= issue.labels.join(', ') %></td>
+                      </tr>
+                  <% }); %>
+              </tbody>
+          </table>
+      </div>
+  
+        
+        
+        
+        
+        
+        
 
 
       <div class="container mt-5">
@@ -89,8 +144,14 @@
       </div>
 
 
+      
+<!-- Back to Top Button and UP-Arrow-->
+<div class="back-to-top">
+  <a href="#top">Go to Top <i class="fa-solid fa-circle-up fa-flip"></i> </a>
+</div>
+
         
       
-      
+<script src="/assets/JavaScript/issue.script.js"></script> 
 </body>
 </html>
