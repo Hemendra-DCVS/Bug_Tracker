@@ -120,4 +120,21 @@ document.addEventListener('DOMContentLoaded', function () {
           authorFilter.appendChild(authorDiv);
       });
   }
+  // Toggle collapse for Labels and Authors when the filter button is clicked
+  const filterButton = document.getElementById('filter-button');
+  const filterContainer = document.getElementById('filter-container');
+
+  filterButton.addEventListener('click', () => {
+    filterContainer.classList.toggle('show');
+  });
+
+});
+
+window.addEventListener('scroll', () => {
+  const backToTopButton = document.querySelector('.back-to-top');
+  if (window.scrollY > 100) {
+    backToTopButton.style.display = 'block';
+  } else {
+    backToTopButton.style.display = 'none';
+  }
 });
