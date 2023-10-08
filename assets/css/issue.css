@@ -36,32 +36,56 @@
 .custom-table {
   font-family: 'Roboto', sans-serif; /* Replace 'Roboto' with your desired font family */
 }
-
-/* Styling for the filter dropdown */
-#filter-dropdown {
+/* Styling for the filter box */
+.row {
   margin-top: 10px;
 }
 
-/* Styling for the filter dropdown button */
-#filter-dropdown.btn {
-  width: 100%;
-  text-align: left;
+.form-group {
+  margin-bottom: 15px;
 }
 
-/* Styling for the filter dropdown menu */
-#filter-dropdown + .dropdown-menu {
-  width: 100%;
-  padding: 10px;
+.form-check {
+  margin-bottom: 5px;
+}
+
+.form-check-label {
+  margin-left: 5px;
+}
+
+.col-md-6 {
+  width: 50%;
+  float: left;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+/* Styling for the two-column layout */
+.row {
+  margin-top: 20px;
+}
+
+.col-md-6 {
+  width: 50%;
+  float: left;
+  padding: 0 15px;
+}
+
+/* Styling for the labels box */
+#labels-filter {
   border: 1px solid #ccc;
+  padding: 10px;
   border-radius: 4px;
   max-height: 300px;
   overflow-y: auto;
-  text-align: left;
 }
 
-/* Styling for label and author filter sections */
-.form-group {
-  margin-bottom: 15px;
+/* Styling for the authors box */
+#author-filter {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 4px;
+  max-height: 300px;
+  overflow-y: auto;
 }
 
 /* Styling for label and author checkboxes */
@@ -69,7 +93,51 @@
   margin-bottom: 5px;
 }
 
-/* Styling for label and author labels */
 .form-check-label {
   margin-left: 5px;
+}
+/* Styling for the two-column layout */
+.row {
+  margin-top: 20px;
+}
+
+.col-md-6 {
+  width: 50%;
+  padding: 0 15px;
+}
+
+/* Styling for the labels box */
+#labels-filter {
+  border: 1px solid #e0e0e0;
+  padding: 10px;
+  border-radius: 4px;
+  max-height: 300px;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+}
+
+/* Styling for the authors box */
+#author-filter {
+  border: 1px solid #e0e0e0;
+  padding: 10px;
+  border-radius: 4px;
+  max-height: 300px;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+}
+
+/* Styling for label and author checkboxes */
+.form-check {
+  margin-bottom: 5px;
+}
+
+.form-check-label {
+  margin-left: 5px;
+}
+
+/* Styling for labels and authors headings */
+h4 {
+  color: #333;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
