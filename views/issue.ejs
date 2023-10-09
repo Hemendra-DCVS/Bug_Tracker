@@ -106,10 +106,54 @@
         <label for="Author">Author:</label>
         <input type="text" class="form-control" id="Author" name="Author" placeholder="Enter author name" required>
       </div>
+      
       <div class="form-group">
-        <label for="labels">Labels (comma-separated):</label>
-        <input type="text" class="form-control" id="labels" name="labels" placeholder="Enter labels (for example: Bugs, New feature, patch)">
+        <label for="labels">Labels:</label>
+        <div>
+          <!-- Common Labels -->
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="bugs" name="labels" value="BUGS">
+            <label class="form-check-label" for="bugs">BUGS</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="new-feature" name="labels" value="New feature">
+            <label class="form-check-label" for="new-feature">New feature</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="patch" name="labels" value="patch">
+            <label class="form-check-label" for="patch">patch</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="frontend" name="labels" value="frontend">
+            <label class="form-check-label" for="frontend">frontend</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="backend" name="labels" value="backend">
+            <label class="form-check-label" for="backend">backend</label>
+          </div>
+          
+          <!-- Additional Labels -->
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="ui" name="labels" value="UI">
+            <label class="form-check-label" for="ui">UI</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="security" name="labels" value="Security">
+            <label class="form-check-label" for="security">Security</label>
+          </div>
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="performance" name="labels" value="Performance">
+            <label class="form-check-label" for="performance">Performance</label>
+          </div>
+          <!-- Add more labels as needed -->
+        </div>
       </div>
+      
+      
+      
+      
+      
+      
       <button type="submit" class="btn btn-primary">Create Issue</button>
     </form>
   </div>

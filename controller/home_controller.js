@@ -1,5 +1,4 @@
-// Import the Task model for working with tasks
-// const Task = require("../models/task");
+//import model
 const Project = require('../models/project');
 // Controller function to handle the GET request for the home page
 module.exports.home = async function (req, res) {
