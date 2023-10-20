@@ -22,13 +22,12 @@ git clone <https://github.com/Hemendra-DCVS/Bug_Tracker>
 Navigate to the project directory:
 cd issue-tracker
 
-
 Install dependencies:
 npm install
-Start the application:
 
 
-npm start
+Start the application: npm start
+
 Access the application in your web browser at http://localhost:8000.
 
 Usage
